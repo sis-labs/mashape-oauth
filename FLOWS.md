@@ -219,6 +219,7 @@ The real two-legged OAuth implementation, so lucrative it's like finding a diamo
 3. Exchange Request Token for Access Token, **signed** request
     - `oauth_token` *Request Token*
     - `oauth_consumer_key`
+    - `oauth_timestamp`
     - `oauth_nonce`
     - `oauth_signature`
     - `oauth_signature_method`
@@ -259,6 +260,7 @@ This flow is the full experience, the grand finale, the whole shebang. It's the 
 3. Exchange Request Token / Verifier for Access Token, **signed** request
     - `oauth_token` *Request Token;*
     - `oauth_consumer_key`
+    - `oauth_timestamp`
     - `oauth_nonce`
     - `oauth_signature`
     - `oauth_signature_method`
@@ -409,7 +411,7 @@ OAuth2 three-legged cuts out a lot of clutter just like the two-legged, no longe
     - `client_id`
     - `redirect_uri`
     - `response_type` [[20, 4.1.1]](http://tools.ietf.org/html/rfc6749#section-4.1.1)
-    - `state` *Optional;* Unique identifier to protect against CSRF [[25]](http://blog.springsource.org/2011/11/30/10317/)
+    - `state` *Optional;* Unique identifier to protect against CSRF [[25]](http://spring.io/blog/2011/11/30/cross-site-request-forgery-and-oauth2)
     - `scope` *Optional;* what data your application can access.
     
     Example Authorization URL (Not-Encoded for Readability):
@@ -418,7 +420,7 @@ OAuth2 three-legged cuts out a lot of clutter just like the two-legged, no longe
 https://oauth_service/login/oauth/authorize?client_id=3MVG9lKcPoNINVB&redirect_uri=http://localhost/oauth/code_callback&scope=user
     ```
 2. User logs into the Service and grants Application access.
-3. Service redirects User back to the `redirect_url` with:
+3. Service redirects User back to the `redirect_uri` with:
     - `code`
     - `state`
 4. Application takes the `code` and exchanges it for an Access Token:
@@ -501,6 +503,6 @@ Here is a long, windy list of places where I tracked down specific information r
 22. [OAuth2 Quickstart](http://www.salesforce.com/us/developer/docs/api_rest/Content/quickstart_oauth.htm) - Salesforce
 23. [Authentication Mechanisms](https://developers.geoloqi.com/api/authentication) - Geoloqi
 24. [Understanding Web Server OAuth Flow](http://www.salesforce.com/us/developer/docs/api_rest/Content/intro_understanding_web_server_oauth_flow.htm) - Salesforce
-25. [CSRF & OAuth2](http://blog.springsource.org/2011/11/30/10317/) - Springsource
+25. [CSRF & OAuth2](http://spring.io/blog/2011/11/30/cross-site-request-forgery-and-oauth2) - Springsource
 26. [OAuth v2-31](https://tools.ietf.org/html/draft-ietf-oauth-v2-31) - IETF
 27. [Resource Owner Flow](http://labs.hybris.com/2012/06/11/oauth2-resource-owner-password-flow/) - Hybris
